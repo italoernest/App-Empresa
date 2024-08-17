@@ -1,0 +1,134 @@
+//Configuração Inicial
+
+python -m venv .venv
+
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
+.\.venv\Scripts\activate
+
+pip install django
+
+django-admin startproject setup .
+
+python.exe .\manage.py runserver
+
+Crie o banco de dados inicial: 
+
+python manage.py migrate
+
+python manage.py createsuperuser
+
+python manage.py migrate
+
+
+Criar os Apps Setup e Login:
+
+Crie o app de configurações: 
+python manage.py startapp setup
+
+Crie o app de login: 
+python manage.py startapp login
+
+//Criar SuperUsuario
+python manage.py createsuperuser
+
+
+/////////// Configurar Projeto
+
+Instalar Dependências
+pip install django-allauth
+pip install dj-database-url
+pip install python-decouple
+pip install django-crispy-forms
+pip install crispy-bootstrap5
+pip install social-auth-app-django
+pip install Pillow
+
+Configurar .Settings
+
+from pathlib import Path
+from decouple import config, Csv
+from dj_database_url import parse as db_url
+
+
+//Criar .env e colocar os dados
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = config("SECRET_KEY")
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = config("DEBUG", cast=bool, default=False)
+
+ALLOWED_HOSTS = config("ALLOWED_HOSTS", default="", cast=Csv())
+
+# Application definition
+
+DJANGO_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+]
+
+THIRD_PARTY_APPS = [
+    'crispy_forms',
+    'crispy_bootstrap5',
+]
+
+MY_APPS = [
+    'users.apps.UsersConfig'
+]
+
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + MY_APPS
+
+
+DATABASES = {
+    'default': config(
+        'DATABASE_URL', default=f'sqlite:///{BASE_DIR / "db.sqlite3"}', cast=db_url  
+    )
+}
+
+
+# https://docs.djangoproject.com/en/5.0/topics/i18n/
+
+LANGUAGE_CODE = 'pt-br'
+
+TIME_ZONE = 'America/Sao_Paulo'
+
+
+STATIC_URL = "static/"
+
+# Default primary key field type
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+
+=======================================================================
+
+//Criar Projeto
+python.exe .\manage.py startapp users
+
+////////////////////////////////////////
+configurações setup / users MODELS
+////////////////////////////////////////
+
+
+
+
+python.exe .\manage.py migrate
+python.exe .\manage.py makemigrations		//Criar nova table
+python.exe .\manage.py migrate			//aplicar migração
+
+
+countries
+country
+
+
+
+
+
+
+https://github.com/pennersr/django-allauth/issues/3405
+

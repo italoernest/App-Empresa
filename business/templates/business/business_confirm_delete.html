@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    Excluír Empresas
+{% endblock page_title %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <h1 class="h3 mb-3"><strong>Deletar</strong> Empresa</h1>
+        </div>
+    </div>
+</div>
+
+    <p>Tem certeza que deseja excluír a Empresa <strong>{{ business.nome_empresa }}</strong>?</p>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <button type="submit" class="btn btn-danger">Excluír</button>
+        <a href="{% url 'business_list' %}" class="btn btn-primary">Cancelar</a>
+    </form>
+{% endblock content %}

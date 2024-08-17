@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    Lista de Empresas
+{% endblock page_title %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <h1 class="h3 mb-3"><strong>Lista</strong> das Empresas</h1>
+        </div>
+        <div class="col">
+            <a href="{% url 'business_create' %}" class="btn btn-primary btn-sm">Criar</a>
+        </div>
+    </div>
+</div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                        {% if business_list %}
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nome da Empresa</th>
+                                <th scope="col">CNPJ</th>
+                                <th scope="col">Inscrição Estadual</th>
+                                <th scope="col">Criado em</th>
+                                <th scope="col">Atualizado em</th>
+                                <th scope="col">Ações</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                {% for business in business_list %}
+                                    <th scope="row">{{ business.pk }}</th>
+                                    <td>{{ business.nome_empresa }}</td>
+                                    <td>{{ business.cnpj }}</td>
+                                    <td>{{ business.inscricao_estadual }}</td>
+                                    <td>{{ business.create_at|date:"d/m/Y"}}</td>
+                                    <td>{{ business.update_at|date:"d/m/Y"}}</td>
+                                    <td>
+                                        <a href="{% url 'business_update' pk=business.pk %}" class="btn btn-warning btn-sm">Editar</a>
+                                        <a href="{% url 'business_delete' pk=business.pk %}" class="btn btn-danger btn-sm">Excluír</a>
+                                    </td>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+
+                        {% else %}
+                            <p>Não há empresa cadastrada</p>
+                        {% endif %}
+                    </div>
+                <div class="card-body">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
