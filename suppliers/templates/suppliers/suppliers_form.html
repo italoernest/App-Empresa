@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 
 {% block page_title %}
-  {% if business.pk %}
+  {% if suppliers.pk %}
     Editar Empresa
     
   {% else %}
@@ -14,7 +14,7 @@
   <div class="container">
     <div class="row">
       <div class="col-3">
-        {% if business.pk %}
+        {% if suppliers.pk %}
           <h1 class="h3 mb-3"><strong>Editar</strong> Empresa</h1>
         {% else %}
           <h1 class="h3 mb-3"><strong>Nova</strong> Empresa</h1>

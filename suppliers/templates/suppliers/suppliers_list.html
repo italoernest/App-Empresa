@@ -11,7 +11,7 @@
             <h1 class="h3 mb-3"><strong>Lista</strong> das Empresas</h1>
         </div>
         <div class="col">
-            <a href="{% url 'business_create' %}" class="btn btn-primary btn-sm">Criar</a>
+            <a href="{% url 'suppliers_create' %}" class="btn btn-primary btn-sm">Criar</a>
         </div>
     </div>
 </div>
@@ -19,7 +19,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                        {% if business_list %}
+                        {% if suppliers_list %}
                         <table class="table">
                             <thead>
                             <tr>
@@ -33,16 +33,16 @@
                             </tr>
                             </thead>
                             <tbody>
-                                {% for business in business_list %}
-                                    <th scope="row">{{ business.pk }}</th>
-                                    <td>{{ business.nome_empresa }}</td>
-                                    <td>{{ business.cnpj }}</td>
-                                    <td>{{ business.inscricao_estadual }}</td>
-                                    <td>{{ business.created_at|date:"d/m/Y H:i"}}</td>
-                                    <td>{{ business.updated_at|date:"d/m/Y H:i"}}</td>
+                                {% for suppliers in suppliers_list %}
+                                    <th scope="row">{{ suppliers.pk }}</th>
+                                    <td>{{ suppliers.nome_empresa }}</td>
+                                    <td>{{ suppliers.cnpj }}</td>
+                                    <td>{{ suppliers.inscricao_estadual }}</td>
+                                    <td>{{ suppliers.created_at|date:"d/m/Y H:i"}}</td>
+                                    <td>{{ suppliers.updated_at|date:"d/m/Y H:i"}}</td>
                                     <td>
-                                        <a href="{% url 'business_update' pk=business.pk %}" class="btn btn-warning btn-sm">Editar</a>
-                                        <a href="{% url 'business_delete' pk=business.pk %}" class="btn btn-danger btn-sm">Excluír</a>
+                                        <a href="{% url 'suppliers_update' pk=suppliers.pk %}" class="btn btn-warning btn-sm">Editar</a>
+                                        <a href="{% url 'suppliers_delete' pk=suppliers.pk %}" class="btn btn-danger btn-sm">Excluír</a>
                                     </td>
                                 {% endfor %}
                             </tbody>

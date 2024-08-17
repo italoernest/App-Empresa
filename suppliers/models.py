@@ -1,7 +1,7 @@
 from django.db import models
-from django.core.exceptions import ValidationError
-from validate_docbr import CNPJ  # Pacote validate-docbr para validar o CNPJ
 from django.core.validators import RegexValidator
+from django.core.exceptions import ValidationError
+from validate_docbr import CNPJ  # Certifique-se de que o pacote validate-docbr está instalado
 
 # Função para validar o CNPJ
 def validar_cnpj(value):
@@ -9,8 +9,8 @@ def validar_cnpj(value):
     if not cnpj.validate(value):
         raise ValidationError("CNPJ inválido. Por favor, insira um CNPJ válido.")
 
-class Business(models.Model):
-    # Nome da Empresa
+class Suppliers(models.Model):
+      # Nome da Empresa
     nome_empresa = models.CharField(max_length=255, verbose_name="Nome da Empresa")
     
     # CNPJ com validador
@@ -129,3 +129,4 @@ class Business(models.Model):
 
     def __str__(self):
         return self.nome_empresa
+    

@@ -1,21 +1,21 @@
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
-from .models import Business
+from .models import Suppliers
 
-class BusinessListView(ListView):
-        model = Business
+class SuppliersListView(ListView):
+        model = Suppliers
 
-class BusinessCreateView(CreateView):
-        model = Business
+class SuppliersCreateView(CreateView):
+        model = Suppliers
         fields = ["nome_empresa", "cnpj", "inscricao_estadual", "telefone", "whatsapp", "logradouro", "numero", "complemento", "bairro", "cidade", "estado", "cep", "observacao"]
-        success_url = reverse_lazy("business_list")
+        success_url = reverse_lazy("suppliers_list")
 
-class BusinessUpdateView(UpdateView):
-    model = Business
+class SuppliersUpdateView(UpdateView):
+    model = Suppliers
     fields = ["nome_empresa", "cnpj", "inscricao_estadual", "telefone", "whatsapp", "logradouro", "numero", "complemento", "bairro", "cidade", "estado", "cep", "observacao"]
-    success_url = reverse_lazy("business_list")
+    success_url = reverse_lazy("suppliers_list")
         
-class BusinessDeleteView(DeleteView):
-       model = Business
-       success_url = reverse_lazy("business_list")
+class SuppliersDeleteView(DeleteView):
+       model = Suppliers
+       success_url = reverse_lazy("suppliers_list")
